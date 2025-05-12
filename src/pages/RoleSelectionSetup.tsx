@@ -6,9 +6,8 @@ import PageTransition from "../components/common/PageTransition";
 const RoleSelectionSetup = () => {
   const navigate = useNavigate();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleNext = (data: RoleSelectionData) => {
-    // Navigate to general questions
+    console.log(data);
     navigate("/general-questions");
   };
 
