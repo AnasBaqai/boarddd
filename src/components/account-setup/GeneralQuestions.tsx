@@ -20,6 +20,7 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
   // Load saved data when component mounts
   useEffect(() => {
     if (generalData) {
+      console.log(generalData);
       setSelectedTeamSize(generalData.teamSize);
       setSelectedCompanySize(generalData.companySize);
     }
