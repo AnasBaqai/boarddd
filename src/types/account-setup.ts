@@ -20,6 +20,24 @@ export interface PurposeSelectionProps {
   onBack: () => void;
 }
 
+export type RoleType =
+  | "Director"
+  | "Team Leader"
+  | "Business Owner"
+  | "Team Member"
+  | "Designer"
+  | "Freelancer";
+
+export interface RoleSelectionData {
+  role: RoleType;
+  purpose: PurposeType; // Store the selected purpose from the previous screen
+}
+
+export interface RoleSelectionProps {
+  onNext: (data: RoleSelectionData) => void;
+  onBack: () => void;
+}
+
 export type TeamSizeType =
   | "Only me"
   | "02-05"

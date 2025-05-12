@@ -9,8 +9,8 @@ const PurposeSetup = () => {
   const handleNext = (data: PurposeSelectionData) => {
     // Here you would typically send this data to your backend
     console.log("Purpose selection:", data);
-    // Navigate to the general questions step
-    navigate("/general-questions");
+    // Navigate to the role selection step
+    navigate("/role-selection");
   };
 
   const handleBack = () => {

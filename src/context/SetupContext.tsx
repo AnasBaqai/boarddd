@@ -2,6 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import {
   AccountSetupFormData,
   PurposeSelectionData,
+  RoleSelectionData,
   GeneralQuestionsData,
   ReferralSourceData,
   ChannelPreferencesData,
@@ -10,16 +11,18 @@ import {
 interface SetupContextType {
   accountData: AccountSetupFormData | null;
   purposeData: PurposeSelectionData | null;
+  roleData: RoleSelectionData | null;
   generalData: GeneralQuestionsData | null;
   referralData: ReferralSourceData | null;
   channelData: ChannelPreferencesData | null;
   updateAccountData: (data: AccountSetupFormData) => void;
   updatePurposeData: (data: PurposeSelectionData) => void;
+  updateRoleData: (data: RoleSelectionData) => void;
   updateGeneralData: (data: GeneralQuestionsData) => void;
   updateReferralData: (data: ReferralSourceData) => void;
   updateChannelData: (data: ChannelPreferencesData) => void;
   isStepCompleted: (
-    step: "account" | "purpose" | "general" | "referral" | "channel"
+    step: "account" | "purpose" | "role" | "general" | "referral" | "channel"
   ) => boolean;
 }
 
@@ -44,6 +47,7 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
   const [purposeData, setPurposeData] = useState<PurposeSelectionData | null>(
     null
   );
+  const [roleData, setRoleData] = useState<RoleSelectionData | null>(null);
   const [generalData, setGeneralData] = useState<GeneralQuestionsData | null>(
     null
   );
@@ -62,6 +66,10 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
     setPurposeData(data);
   };
 
+  const updateRoleData = (data: RoleSelectionData) => {
+    setRoleData(data);
+  };
+
   const updateGeneralData = (data: GeneralQuestionsData) => {
     setGeneralData(data);
   };
@@ -75,13 +83,15 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
   };
 
   const isStepCompleted = (
-    step: "account" | "purpose" | "general" | "referral" | "channel"
+    step: "account" | "purpose" | "role" | "general" | "referral" | "channel"
   ) => {
     switch (step) {
       case "account":
         return !!accountData;
       case "purpose":
         return !!purposeData;
+      case "role":
+        return !!roleData;
       case "general":
         return !!generalData;
       case "referral":
@@ -98,11 +108,13 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
       value={{
         accountData,
         purposeData,
+        roleData,
         generalData,
         referralData,
         channelData,
         updateAccountData,
         updatePurposeData,
+        updateRoleData,
         updateGeneralData,
         updateReferralData,
         updateChannelData,

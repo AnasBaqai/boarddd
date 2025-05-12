@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import AccountSetup from "./pages/AccountSetup";
 import PurposeSetup from "./pages/PurposeSetup";
+import RoleSelectionSetup from "./pages/RoleSelectionSetup";
 import GeneralQuestionsSetup from "./pages/GeneralQuestionsSetup";
 import ReferralSourceSetup from "./pages/ReferralSourceSetup";
 import ChannelPreferencesSetup from "./pages/ChannelPreferencesSetup";
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/account-setup" element={<AccountSetup />} />
         <Route path="/purpose-setup" element={<PurposeSetup />} />
+        <Route path="/role-selection" element={<RoleSelectionSetup />} />
         <Route path="/general-questions" element={<GeneralQuestionsSetup />} />
         <Route path="/referral-source" element={<ReferralSourceSetup />} />
         <Route

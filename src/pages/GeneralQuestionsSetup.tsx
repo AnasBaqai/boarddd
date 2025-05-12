@@ -11,7 +11,7 @@ const GeneralQuestionsSetup = () => {
   };
 
   const handleBack = () => {
-    navigate("/purpose-setup");
+    navigate("/role-selection");
   };
 
   return (

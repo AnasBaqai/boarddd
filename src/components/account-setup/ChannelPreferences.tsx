@@ -86,20 +86,20 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
                   onClick={() => toggleFeature(feature)}
                   className={`
                     relative flex flex-col justify-end
-                    rounded-2xl p-8 cursor-pointer transition-all duration-200
-                    min-h-[200px] hover:scale-105
+                    rounded-2xl p-8 pb-4 cursor-pointer transition-all duration-200
+                    min-h-[220px] hover:scale-105
                     ${
                       isSelected
                         ? "bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg"
-                        : "bg-gradient-to-br from-white to-blue-50 border-2 border-gray-100"
+                        : "bg-white border-2 border-gray-100"
                     }
                   `}
                 >
-                  <div className="absolute top-8 left-8">
+                  <div className="absolute top-6 left-6">
                     <img
                       src={`/channel-icons/${iconName}.svg`}
                       alt={feature}
-                      className={`w-12 h-12 ${
+                      className={`w-8 h-8 ${
                         isSelected
                           ? "brightness-0 invert"
                           : feature === "Task Management"
@@ -109,7 +109,7 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
                     />
                   </div>
                   <h3
-                    className={`text-center text-lg font-medium ${
+                    className={`text-center text-lg font-medium whitespace-nowrap mb-0 ${
                       isSelected ? "text-white" : "text-gray-900"
                     }`}
                   >
