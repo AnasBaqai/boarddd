@@ -3,10 +3,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset scaling issues */
-html {
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
+/* Reset scaling issues - more aggressive for production */
+:root {
+  font-size: 16px !important;
+}
+
+html, body {
+  font-size: 16px !important;
+  -webkit-text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  -ms-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  zoom: 1 !important;
+}
+
+/* Fix text sizing in all elements */
+h1, h2, h3, h4, h5, h6, p, span, div, button, input, label, a {
+  transform: scale(1) !important;
+  zoom: 1 !important;
+}
+
+/* Ensure proper sizing for specific component sizes */
+.text-5xl {
+  font-size: 3rem !important;
+}
+.text-4xl {
+  font-size: 2.25rem !important;
+}
+.text-3xl {
+  font-size: 1.875rem !important;
+}
+.text-2xl {
+  font-size: 1.5rem !important;
+}
+.text-xl {
+  font-size: 1.25rem !important;
+}
+.text-lg {
+  font-size: 1.125rem !important;
+}
+.text-base {
+  font-size: 1rem !important;
+}
+.text-sm {
+  font-size: 0.875rem !important;
+}
+.text-xs {
+  font-size: 0.75rem !important;
 }
 
 body {
@@ -33,7 +76,7 @@ body {
 .heading-bricolage {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 24px !important;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
