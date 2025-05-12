@@ -11,21 +11,28 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
   onBack,
 }) => {
   const { generalData, updateGeneralData } = useSetup();
-  const [teamSize, setTeamSize] = useState<TeamSizeType | null>(null);
-  const [companySize, setCompanySize] = useState<CompanySizeType | null>(null);
+  const [selectedTeamSize, setSelectedTeamSize] = useState<TeamSizeType | null>(
+    null
+  );
+  const [selectedCompanySize, setSelectedCompanySize] =
+    useState<CompanySizeType | null>(null);
 
   // Load saved data when component mounts
   useEffect(() => {
     if (generalData) {
-      setTeamSize(generalData.teamSize);
-      setCompanySize(generalData.companySize);
+      console.log(generalData);
+      setSelectedTeamSize(generalData.teamSize);
+      setSelectedCompanySize(generalData.companySize);
     }
   }, [generalData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (teamSize && companySize) {
-      const data = { teamSize, companySize };
+    if (selectedTeamSize && selectedCompanySize) {
+      const data = {
+        teamSize: selectedTeamSize,
+        companySize: selectedCompanySize,
+      };
       updateGeneralData(data);
       onNext(data);
     }
@@ -54,108 +61,106 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
 
   return (
     <div className="min-h-screen w-full bg-white">
-      <div className="mx-auto max-w-2xl px-4 sm:px-8 py-8 sm:py-12">
+      <div className="mx-auto max-w-xl px-4 sm:px-6 py-6 sm:py-8">
         {/* Logo */}
-        <div className="mb-8 sm:mb-16 text-center">
-          <h1 className="text-2xl font-semibold">Boarddd</h1>
+        <div className="mb-8 text-center">
+          <h1 className="font-semibold">Boarddd</h1>
         </div>
 
         {/* Back button and questions */}
-        <div className="space-y-8 sm:space-y-12">
-          <div className="flex flex-col md:flex-row md:items-center md:gap-8 md:pl-8">
+        <div className="space-y-6 sm:space-y-8">
+          <div className="flex flex-col md:flex-row md:items-center md:gap-6 md:pl-6">
             <button
               type="button"
               onClick={onBack}
-              className="flex items-center text-sm text-gray-400 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-4 md:mb-0"
+              className="flex items-center text-sm text-gray-400 hover:text-gray-700 md:absolute md:left-32 md:top-32 relative mb-4 md:mb-0"
             >
-              <img src={"/back_arrow.svg"} className={" p-2"} />
+              <img src={"/back_arrow.svg"} className={"p-1"} />
               Go back
             </button>
-
-            <h2 className="text-xl sm:text-2xl font-semibold">
-              How many people are on your team?
-            </h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-              {teamSizes.map((size) => (
-                <label
-                  key={size}
-                  className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors
-                    ${
-                      teamSize === size
-                        ? "border-blue-500 bg-blue-50"
-                        : "border-gray-300 hover:border-gray-400"
-                    }
-                  `}
-                >
-                  <input
-                    type="radio"
-                    name="teamSize"
-                    value={size}
-                    checked={teamSize === size}
-                    onChange={(e) =>
-                      setTeamSize(e.target.value as TeamSizeType)
-                    }
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="ml-2 text-xs sm:text-sm text-gray-900">
-                    {size}
-                  </span>
-                </label>
-              ))}
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="heading-bricolage mb-4">
+                  How many people are in your team?
+                </h2>
 
-            <div>
-              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-semibold">
-                How many people work at your company?
-              </h2>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-                {companySizes.map((size) => (
-                  <label
-                    key={size}
-                    className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors
-                      ${
-                        companySize === size
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {teamSizes.map((size) => (
+                    <label
+                      key={size}
+                      className={`flex cursor-pointer items-center rounded-lg border p-2 transition-colors ${
+                        selectedTeamSize === size
                           ? "border-blue-500 bg-blue-50"
                           : "border-gray-300 hover:border-gray-400"
-                      }
-                    `}
-                  >
-                    <input
-                      type="radio"
-                      name="companySize"
-                      value={size}
-                      checked={companySize === size}
-                      onChange={(e) =>
-                        setCompanySize(e.target.value as CompanySizeType)
-                      }
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-xs sm:text-sm text-gray-900">
-                      {size}
-                    </span>
-                  </label>
-                ))}
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="teamSize"
+                        value={size}
+                        checked={selectedTeamSize === size}
+                        onChange={(e) =>
+                          setSelectedTeamSize(e.target.value as TeamSizeType)
+                        }
+                        className="h-3 w-3 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="ml-1 text-xs text-gray-900">{size}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="heading-bricolage mb-4">
+                  What's your company size?
+                </h2>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {companySizes.map((size) => (
+                    <label
+                      key={size}
+                      className={`flex cursor-pointer items-center rounded-lg border p-2 transition-colors ${
+                        selectedCompanySize === size
+                          ? "border-blue-500 bg-blue-50"
+                          : "border-gray-300 hover:border-gray-400"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="companySize"
+                        value={size}
+                        checked={selectedCompanySize === size}
+                        onChange={(e) =>
+                          setSelectedCompanySize(
+                            e.target.value as CompanySizeType
+                          )
+                        }
+                        className="h-3 w-3 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="ml-1 text-xs text-gray-900">{size}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
             </div>
 
-            <div className="flex justify-center pt-4 sm:pt-8">
+            <div className="flex justify-center pt-4">
               <button
                 type="submit"
-                disabled={!teamSize || !companySize}
-                className={`flex items-center rounded-lg px-6 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                disabled={!selectedTeamSize || !selectedCompanySize}
+                className={`flex items-center rounded-lg px-4 py-2 text-xs font-semibold text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2
                   ${
-                    teamSize && companySize
+                    selectedTeamSize && selectedCompanySize
                       ? "bg-[#F0FAFF] hover:bg-blue-50"
                       : "bg-gray-100 cursor-not-allowed"
                   }
                 `}
               >
                 Next
-                <img src={"/arrow.svg"} className={"p-2"} />
+                <img src={"/arrow.svg"} className={"p-1"} />
               </button>
             </div>
           </form>

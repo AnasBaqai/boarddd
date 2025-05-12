@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-interface SignUpFormProps {
-  onSubmit: (name: string, email: string, password: string) => void;
+interface SignInFormProps {
+  onSubmit: (email: string, password: string) => void;
 }
 
-const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
-  const [name, setName] = useState("");
+const SignInForm: React.FC<SignInFormProps> = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(name, email, password);
+    onSubmit(email, password);
   };
 
   return (
@@ -26,25 +25,10 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
 
           <div className="space-y-8 md:space-y-10">
             <div>
-              <h2 className="font-semibold mb-16">Create your account</h2>
+              <h2 className="font-semibold mb-16">Welcome Back</h2>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm text-gray-700">
-                  Full name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  placeholder="Enter your full name"
-                  required
-                />
-              </div>
-
               <div>
                 <label htmlFor="email" className="block text-sm text-gray-700">
                   Email
@@ -73,9 +57,32 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  placeholder="Create a password"
+                  placeholder="Enter your password"
                   required
                 />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <input
+                    id="remember-me"
+                    name="remember-me"
+                    type="checkbox"
+                    className="h-3 w-3 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label
+                    htmlFor="remember-me"
+                    className="ml-1 block text-xs text-gray-900"
+                  >
+                    Remember me
+                  </label>
+                </div>
+
+                <div className="text-xs">
+                  <a href="#" className="text-blue-600 hover:text-blue-500">
+                    Forgot password?
+                  </a>
+                </div>
               </div>
 
               <div className="pt-4">
@@ -83,15 +90,15 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
                   type="submit"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
-                  Sign up
+                  Sign in
                 </button>
               </div>
             </form>
 
             <div className="text-center text-xs text-gray-600">
-              <span>Already have an account? </span>
-              <Link to="/signin" className="text-blue-600 hover:text-blue-500">
-                Sign in
+              <span>Don't have an account? </span>
+              <Link to="/signup" className="text-blue-600 hover:text-blue-500">
+                Sign up
               </Link>
             </div>
           </div>
@@ -104,4 +111,4 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
   );
 };
 
-export default SignUpForm;
+export default SignInForm;

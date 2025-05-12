@@ -30,19 +30,17 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* Left side - Content */}
       <div className="flex w-full md:w-1/2 relative">
-        <div className="w-full pl-6 pr-4 py-8 md:pl-16 md:pr-[30%]">
-          <div className="mb-16 md:mb-36 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-semibold">Boarddd</h1>
+        <div className="w-full pl-8 pr-4 py-6 md:pl-12 md:pr-[25%]">
+          <div className="mb-16 md:mb-20 text-center md:text-left">
+            <h1 className="font-semibold">Boarddd</h1>
           </div>
 
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-8 md:space-y-10">
             <div>
-              <h2 className="text-xl md:text-2xl font-semibold mb-10 md:mb-50 text-center md:text-left">
-                Make your Account
-              </h2>
+              <h2 className="font-semibold mb-16">Make your Account</h2>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
               <div>
                 <label
                   htmlFor="fullName"
@@ -57,7 +55,7 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
                   onChange={(e) =>
                     setFormData({ ...formData, fullName: e.target.value })
                   }
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2.5 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   placeholder="Enter your full name"
                   required
                 />
@@ -77,7 +75,7 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
                   onChange={(e) =>
                     setFormData({ ...formData, password: e.target.value })
                   }
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2.5 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   placeholder="Your password must be at least 8 characters"
                   required
                 />
@@ -97,29 +95,29 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
                   onChange={(e) =>
                     setFormData({ ...formData, accountName: e.target.value })
                   }
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2.5 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   placeholder="Enter your account name"
                   required
                 />
               </div>
 
               {/* Mobile buttons inside form */}
-              <div className="flex items-center justify-between mt-20 md:hidden">
+              <div className="flex items-center justify-between mt-16 md:hidden">
                 <button
                   type="button"
                   onClick={onBack}
                   className="flex items-center text-sm text-gray-400 hover:text-gray-700"
                 >
-                  <img src={"/back_arrow.svg"} className={"p-2"} />
+                  <img src={"/back_arrow.svg"} className={"p-1"} />
                   Go back
                 </button>
 
                 <button
                   onClick={handleSubmit}
-                  className="flex items-center rounded-lg bg-[#F0FAFF] px-6 py-2.5 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="flex items-center rounded-lg bg-[#F0FAFF] px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
                   Next
-                  <img src={"/arrow.svg"} className={"p-2"} />
+                  <img src={"/arrow.svg"} className={"p-1"} />
                 </button>
               </div>
             </form>
@@ -127,24 +125,24 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
         </div>
 
         {/* Buttons positioned at the bottom - desktop only */}
-        <div className="absolute bottom-6 md:bottom-12 left-0 right-0 px-6 md:px-16 hidden md:flex items-center justify-between">
+        <div className="absolute bottom-8 md:bottom-10 left-0 right-0 px-8 md:px-12 hidden md:flex items-center justify-between">
           <button
             type="button"
             onClick={onBack}
             className="flex items-center text-sm text-gray-400 hover:text-gray-700"
           >
-            <img src={"/back_arrow.svg"} className={"p-2"} />
+            <img src={"/back_arrow.svg"} className={"p-1"} />
             Go back
           </button>
 
           {/* Next button positioned to be partially outside the input area */}
-          <div className="relative md:right-[130px]">
+          <div className="relative md:right-[100px]">
             <button
               onClick={handleSubmit}
-              className="flex items-center rounded-lg bg-[#F0FAFF] px-6 py-2.5 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="flex items-center rounded-lg bg-[#F0FAFF] px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               Next
-              <img src={"/arrow.svg"} className={"p-2"} />
+              <img src={"/arrow.svg"} className={"p-1"} />
             </button>
           </div>
         </div>
