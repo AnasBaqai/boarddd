@@ -108,61 +108,16 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
                   onClick={onBack}
                   className="flex items-center text-sm text-gray-500 hover:text-gray-700"
                 >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="mr-2 rotate-270"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M12 7v10M12 7l-4 4M12 7l4 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <img src={"/arrow.svg"} className={"rotate-180 p-2"} />
                   Go back
                 </button>
-
                 <button
                   type="submit"
                   className="flex items-center rounded-lg bg-[#F0FAFF] px-6 py-2.5 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
                   Next
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-2 rotate-90"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M12 7v10M12 7l-4 4M12 7l4 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
+                  <img src={"/arrow.svg"} className={"p-2"} />
+                </button>{" "}
               </div>
             </form>
           </div>

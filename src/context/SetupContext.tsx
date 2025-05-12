@@ -4,6 +4,7 @@ import {
   PurposeSelectionData,
   GeneralQuestionsData,
   ReferralSourceData,
+  ChannelPreferencesData,
 } from "../types/account-setup";
 
 interface SetupContextType {
@@ -11,12 +12,14 @@ interface SetupContextType {
   purposeData: PurposeSelectionData | null;
   generalData: GeneralQuestionsData | null;
   referralData: ReferralSourceData | null;
+  channelData: ChannelPreferencesData | null;
   updateAccountData: (data: AccountSetupFormData) => void;
   updatePurposeData: (data: PurposeSelectionData) => void;
   updateGeneralData: (data: GeneralQuestionsData) => void;
   updateReferralData: (data: ReferralSourceData) => void;
+  updateChannelData: (data: ChannelPreferencesData) => void;
   isStepCompleted: (
-    step: "account" | "purpose" | "general" | "referral"
+    step: "account" | "purpose" | "general" | "referral" | "channel"
   ) => boolean;
 }
 
@@ -47,6 +50,9 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
   const [referralData, setReferralData] = useState<ReferralSourceData | null>(
     null
   );
+  const [channelData, setChannelData] = useState<ChannelPreferencesData | null>(
+    null
+  );
 
   const updateAccountData = (data: AccountSetupFormData) => {
     setAccountData(data);
@@ -64,8 +70,12 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
     setReferralData(data);
   };
 
+  const updateChannelData = (data: ChannelPreferencesData) => {
+    setChannelData(data);
+  };
+
   const isStepCompleted = (
-    step: "account" | "purpose" | "general" | "referral"
+    step: "account" | "purpose" | "general" | "referral" | "channel"
   ) => {
     switch (step) {
       case "account":
@@ -76,6 +86,8 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
         return !!generalData;
       case "referral":
         return !!referralData;
+      case "channel":
+        return !!channelData;
       default:
         return false;
     }
@@ -88,10 +100,12 @@ export const SetupProvider = ({ children }: SetupProviderProps) => {
         purposeData,
         generalData,
         referralData,
+        channelData,
         updateAccountData,
         updatePurposeData,
         updateGeneralData,
         updateReferralData,
+        updateChannelData,
         isStepCompleted,
       }}
     >

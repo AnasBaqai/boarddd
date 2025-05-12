@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 const ReferralSourceSetup = () => {
   const navigate = useNavigate();
 
-  const handleNext = (data: ReferralSourceData) => {
-    // Navigate to the next step (you can change this to wherever you want to go next)
-    navigate("/dashboard");
+  const handleNext: (data: ReferralSourceData) => void = () => {
+    // Navigate to the channel preferences page
+    navigate("/channel-preferences");
   };
 
   const handleBack = () => {

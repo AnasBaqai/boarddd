@@ -12,6 +12,7 @@ import AccountSetup from "./pages/AccountSetup";
 import PurposeSetup from "./pages/PurposeSetup";
 import GeneralQuestionsSetup from "./pages/GeneralQuestionsSetup";
 import ReferralSourceSetup from "./pages/ReferralSourceSetup";
+import ChannelPreferencesSetup from "./pages/ChannelPreferencesSetup";
 import { SetupProvider } from "./context/SetupContext";
 
 function AnimatedRoutes() {
@@ -26,6 +27,10 @@ function AnimatedRoutes() {
         <Route path="/purpose-setup" element={<PurposeSetup />} />
         <Route path="/general-questions" element={<GeneralQuestionsSetup />} />
         <Route path="/referral-source" element={<ReferralSourceSetup />} />
+        <Route
+          path="/channel-preferences"
+          element={<ChannelPreferencesSetup />}
+        />
         <Route path="/" element={<Navigate to="/signin" replace />} />
       </Routes>
     </AnimatePresence>

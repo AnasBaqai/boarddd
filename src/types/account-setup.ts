@@ -65,3 +65,19 @@ export interface ReferralSourceProps {
   onNext: (data: ReferralSourceData) => void;
   onBack: () => void;
 }
+
+export type ChannelFeatureType =
+  | "Task Management"
+  | "Client Management"
+  | "Form Builder"
+  | "Work in Progress"
+  | "Time Tracking";
+
+export interface ChannelPreferencesData {
+  selectedFeatures: ChannelFeatureType[];
+}
+
+export interface ChannelPreferencesProps {
+  onNext: (data: ChannelPreferencesData) => void;
+  onBack: () => void;
+}
