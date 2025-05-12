@@ -34,22 +34,22 @@ const PurposeSelection: React.FC<PurposeSelectionProps> = ({
       <div className="mx-auto max-w-2xl px-4 sm:px-8 py-8 sm:py-12">
         {/* Logo */}
         <div className="mb-8 sm:mb-16 text-center">
-          <h1 className="text-2xl font-semibold">Boarddd</h1>
+          <h1 className="text-5xl font-semibold mb-">Boarddd</h1>
         </div>
 
         {/* Back button and questions */}
         <div className="space-y-8 sm:space-y-12">
-          <div className="flex flex-col md:flex-row md:items-center md:gap-8 md:pl-8">
+          <div className="flex flex-col md:flex-row md:items-center md:gap-8 md:pl-8 mt-40">
             <button
               type="button"
               onClick={onBack}
-              className="flex items-center text-sm text-gray-500 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-4 md:mb-0"
+              className="flex items-center text-sm text-gray-400 hover:text-gray-700 md:absolute md:left-40 md:top-50 relative mb-4 md:mb-0"
             >
-              <img src={"/arrow.svg"} className={"rotate-180 p-2"} />
+              <img src={"/back_arrow.svg"} className={"p-2"} />
               Go back
             </button>
 
-            <h2 className="text-xl sm:text-2xl font-semibold">
+            <h2 className="text-xl sm:text-3xl font-medium">
               Hey there, what brings you here today?
             </h2>
           </div>

@@ -35,30 +35,32 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Logo */}
         <div className="mb-12 text-center">
-          <h1 className="text-2xl font-semibold">Boarddd</h1>
+          <h1 className="text-5xl font-medium">Boarddd</h1>
         </div>
 
         {/* Back button */}
-        <button
-          type="button"
-          onClick={onBack}
-          className="flex items-center text-sm text-gray-500 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-8"
-        >
-          <img src={"/arrow.svg"} className={"rotate-180 p-2"} />
-          Go back
-        </button>
+        <div className="mt-36">
+          <button
+            type="button"
+            onClick={onBack}
+            className="flex items-center text-sm text-gray-400 hover:text-gray-700 md:absolute md:left-40 md:top-50 relative mb-8"
+          >
+            <img src={"/back_arrow.svg"} className={"p-2"} />
+            Go back
+          </button>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-12">
           {/* Purpose display */}
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl font-medium text-center">
+              <h2 className="text-3xl  text-center ">
                 Hey there, what brings you here today?
               </h2>
 
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-4 ">
                 {purposeData && (
-                  <div className="grid grid-cols-4 gap-4 max-w-xl">
+                  <div className="grid grid-cols-4 gap-4 max-w-xl mb-11">
                     {["Work", "Personal", "School", "Non Profits"].map(
                       (purpose) => (
                         <label
@@ -88,15 +90,15 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
 
             {/* Role selection */}
             <div className="space-y-4">
-              <h2 className="text-3xl font-medium text-center">
+              <h2 className="heading-bricolage mb-6">
                 What best describes your current role?
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-lg mx-auto">
                 {roles.slice(0, 3).map((role) => (
                   <label
                     key={role}
-                    className={`flex cursor-pointer items-center rounded-lg border p-4 transition-colors ${
+                    className={`flex cursor-pointer items-center rounded-lg border p-3 transition-colors ${
                       selectedRole === role
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-200 hover:border-gray-300"
@@ -115,11 +117,11 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
                 ))}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-lg mx-auto">
                 {roles.slice(3).map((role) => (
                   <label
                     key={role}
-                    className={`flex cursor-pointer items-center rounded-lg border p-4 transition-colors ${
+                    className={`flex cursor-pointer items-center rounded-lg border p-3 transition-colors ${
                       selectedRole === role
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-200 hover:border-gray-300"

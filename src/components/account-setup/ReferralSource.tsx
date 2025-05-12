@@ -50,9 +50,9 @@ const ReferralSource: React.FC<ReferralSourceProps> = ({ onNext, onBack }) => {
             <button
               type="button"
               onClick={onBack}
-              className="flex items-center text-sm text-gray-500 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-4 md:mb-0"
+              className="flex items-center text-sm text-gray-400 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-4 md:mb-0"
             >
-              <img src={"/arrow.svg"} className={"rotate-180 p-2"} />
+              <img src={"/back_arrow.svg"} className={" p-2"} />
               Go back
             </button>
 

@@ -53,13 +53,13 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
           <h1 className="text-2xl font-semibold">Boarddd</h1>
         </div>
 
-        {/* Back button */}
+        {/* Back button*/}
         <button
           type="button"
           onClick={onBack}
-          className="flex items-center text-sm text-gray-500 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-8"
+          className="flex items-center text-sm text-gray-400 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-8 "
         >
-          <img src={"/arrow.svg"} className={"rotate-180 p-2"} />
+          <img src={"/back_arrow.svg"} className={"p-2 "} />
           Go back
         </button>
 

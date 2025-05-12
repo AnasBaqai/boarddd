@@ -11,21 +11,27 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
   onBack,
 }) => {
   const { generalData, updateGeneralData } = useSetup();
-  const [teamSize, setTeamSize] = useState<TeamSizeType | null>(null);
-  const [companySize, setCompanySize] = useState<CompanySizeType | null>(null);
+  const [selectedTeamSize, setSelectedTeamSize] = useState<TeamSizeType | null>(
+    null
+  );
+  const [selectedCompanySize, setSelectedCompanySize] =
+    useState<CompanySizeType | null>(null);
 
   // Load saved data when component mounts
   useEffect(() => {
     if (generalData) {
-      setTeamSize(generalData.teamSize);
-      setCompanySize(generalData.companySize);
+      setSelectedTeamSize(generalData.teamSize);
+      setSelectedCompanySize(generalData.companySize);
     }
   }, [generalData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (teamSize && companySize) {
-      const data = { teamSize, companySize };
+    if (selectedTeamSize && selectedCompanySize) {
+      const data = {
+        teamSize: selectedTeamSize,
+        companySize: selectedCompanySize,
+      };
       updateGeneralData(data);
       onNext(data);
     }
@@ -66,89 +72,91 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
             <button
               type="button"
               onClick={onBack}
-              className="flex items-center text-sm text-gray-500 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-4 md:mb-0"
+              className="flex items-center text-sm text-gray-400 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-4 md:mb-0"
             >
-              <img src={"/arrow.svg"} className={"rotate-180 p-2"} />
+              <img src={"/back_arrow.svg"} className={" p-2"} />
               Go back
             </button>
-
-            <h2 className="text-xl sm:text-2xl font-semibold">
-              How many people are on your team?
-            </h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-              {teamSizes.map((size) => (
-                <label
-                  key={size}
-                  className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors
-                    ${
-                      teamSize === size
-                        ? "border-blue-500 bg-blue-50"
-                        : "border-gray-300 hover:border-gray-400"
-                    }
-                  `}
-                >
-                  <input
-                    type="radio"
-                    name="teamSize"
-                    value={size}
-                    checked={teamSize === size}
-                    onChange={(e) =>
-                      setTeamSize(e.target.value as TeamSizeType)
-                    }
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="ml-2 text-xs sm:text-sm text-gray-900">
-                    {size}
-                  </span>
-                </label>
-              ))}
-            </div>
+            <div className="space-y-8">
+              <div>
+                <h2 className="heading-bricolage mb-6">
+                  How many people are in your team?
+                </h2>
 
-            <div>
-              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-semibold">
-                How many people work at your company?
-              </h2>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-                {companySizes.map((size) => (
-                  <label
-                    key={size}
-                    className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors
-                      ${
-                        companySize === size
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+                  {teamSizes.map((size) => (
+                    <label
+                      key={size}
+                      className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors ${
+                        selectedTeamSize === size
                           ? "border-blue-500 bg-blue-50"
                           : "border-gray-300 hover:border-gray-400"
-                      }
-                    `}
-                  >
-                    <input
-                      type="radio"
-                      name="companySize"
-                      value={size}
-                      checked={companySize === size}
-                      onChange={(e) =>
-                        setCompanySize(e.target.value as CompanySizeType)
-                      }
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-xs sm:text-sm text-gray-900">
-                      {size}
-                    </span>
-                  </label>
-                ))}
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="teamSize"
+                        value={size}
+                        checked={selectedTeamSize === size}
+                        onChange={(e) =>
+                          setSelectedTeamSize(e.target.value as TeamSizeType)
+                        }
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="ml-2 text-xs sm:text-sm text-gray-900">
+                        {size}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="heading-bricolage mb-6">
+                  What's your company size?
+                </h2>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+                  {companySizes.map((size) => (
+                    <label
+                      key={size}
+                      className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors ${
+                        selectedCompanySize === size
+                          ? "border-blue-500 bg-blue-50"
+                          : "border-gray-300 hover:border-gray-400"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="companySize"
+                        value={size}
+                        checked={selectedCompanySize === size}
+                        onChange={(e) =>
+                          setSelectedCompanySize(
+                            e.target.value as CompanySizeType
+                          )
+                        }
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="ml-2 text-xs sm:text-sm text-gray-900">
+                        {size}
+                      </span>
+                    </label>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div className="flex justify-center pt-4 sm:pt-8">
               <button
                 type="submit"
-                disabled={!teamSize || !companySize}
+                disabled={!selectedTeamSize || !selectedCompanySize}
                 className={`flex items-center rounded-lg px-6 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                   ${
-                    teamSize && companySize
+                    selectedTeamSize && selectedCompanySize
                       ? "bg-[#F0FAFF] hover:bg-blue-50"
                       : "bg-gray-100 cursor-not-allowed"
                   }
