@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import SignUp from "./pages/SignUp";
+import AccountSetup from "./pages/AccountSetup";
+import PurposeSetup from "./pages/PurposeSetup";
+import GeneralQuestionsSetup from "./pages/GeneralQuestionsSetup";
 
-function App() {
-  const [count, setCount] = useState(0)
+function AnimatedRoutes() {
+  const location = useLocation();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/account-setup" element={<AccountSetup />} />
+        <Route path="/purpose-setup" element={<PurposeSetup />} />
+        <Route path="/general-questions" element={<GeneralQuestionsSetup />} />
+        <Route path="/" element={<Navigate to="/signup" replace />} />
+      </Routes>
+    </AnimatePresence>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <AnimatedRoutes />
+    </Router>
+  );
+}
+
+export default App;
