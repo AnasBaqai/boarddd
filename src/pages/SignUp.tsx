@@ -25,10 +25,10 @@ const SignUp = () => {
             {/* Logo and Tagline */}
             <div className="text-center">
               <h1 className="mb-2 text-3xl md:text-4xl font-semibold">
-                Welcome to Boarddd
+                Boarddd
               </h1>
               <p className="text-sm md:text-base text-gray-600">
-                Get Started- its's free. No credit card needed.
+                Welcome to Boarddd. Let's get started with your account.
               </p>
             </div>
 

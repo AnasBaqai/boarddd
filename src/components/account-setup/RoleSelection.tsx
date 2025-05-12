@@ -54,7 +54,7 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
           {/* Purpose display */}
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl  text-center ">
+              <h2 className="text-3xl font-semibold text-center text-gray-600">
                 Hey there, what brings you here today?
               </h2>
 
@@ -90,7 +90,7 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
 
             {/* Role selection */}
             <div className="space-y-4">
-              <h2 className="heading-bricolage mb-6">
+              <h2 className="text-3xl font-medium text-center">
                 What best describes your current role?
               </h2>
 
