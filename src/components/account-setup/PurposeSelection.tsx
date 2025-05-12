@@ -1,18 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PurposeSelectionProps, PurposeType } from "../../types/account-setup";
+import { useSetup } from "../../context/SetupContext";
 
 const PurposeSelection: React.FC<PurposeSelectionProps> = ({
   onNext,
   onBack,
 }) => {
+  const { purposeData, updatePurposeData } = useSetup();
   const [selectedPurpose, setSelectedPurpose] = useState<PurposeType | null>(
     null
   );
 
+  // Load saved data when component mounts
+  useEffect(() => {
+    if (purposeData) {
+      setSelectedPurpose(purposeData.purpose);
+    }
+  }, [purposeData]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedPurpose) {
-      onNext({ purpose: selectedPurpose });
+      const data = { purpose: selectedPurpose };
+      updatePurposeData(data);
+      onNext(data);
     }
   };
 
@@ -66,7 +77,7 @@ const PurposeSelection: React.FC<PurposeSelectionProps> = ({
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-12">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-4 gap-4">
             {purposes.map((purpose) => (
               <label
                 key={purpose}

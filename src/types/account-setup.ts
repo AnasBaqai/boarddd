@@ -47,3 +47,21 @@ export interface GeneralQuestionsProps {
   onNext: (data: GeneralQuestionsData) => void;
   onBack: () => void;
 }
+
+export type ReferralSourceType =
+  | "YouTube"
+  | "Search Engine"
+  | "Linked in"
+  | "Facebook"
+  | "Instagram"
+  | "Audio Ad"
+  | "Other";
+
+export interface ReferralSourceData {
+  source: ReferralSourceType;
+}
+
+export interface ReferralSourceProps {
+  onNext: (data: ReferralSourceData) => void;
+  onBack: () => void;
+}

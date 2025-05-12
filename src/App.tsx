@@ -10,6 +10,8 @@ import SignUp from "./pages/SignUp";
 import AccountSetup from "./pages/AccountSetup";
 import PurposeSetup from "./pages/PurposeSetup";
 import GeneralQuestionsSetup from "./pages/GeneralQuestionsSetup";
+import ReferralSourceSetup from "./pages/ReferralSourceSetup";
+import { SetupProvider } from "./context/SetupContext";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -21,6 +23,7 @@ function AnimatedRoutes() {
         <Route path="/account-setup" element={<AccountSetup />} />
         <Route path="/purpose-setup" element={<PurposeSetup />} />
         <Route path="/general-questions" element={<GeneralQuestionsSetup />} />
+        <Route path="/referral-source" element={<ReferralSourceSetup />} />
         <Route path="/" element={<Navigate to="/signup" replace />} />
       </Routes>
     </AnimatePresence>
@@ -29,9 +32,11 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <Router>
-      <AnimatedRoutes />
-    </Router>
+    <SetupProvider>
+      <Router>
+        <AnimatedRoutes />
+      </Router>
+    </SetupProvider>
   );
 }
 

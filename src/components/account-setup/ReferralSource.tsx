@@ -1,55 +1,39 @@
 import { useState, useEffect } from "react";
 import {
-  GeneralQuestionsProps,
-  TeamSizeType,
-  CompanySizeType,
+  ReferralSourceProps,
+  ReferralSourceType,
 } from "../../types/account-setup";
 import { useSetup } from "../../context/SetupContext";
 
-const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
-  onNext,
-  onBack,
-}) => {
-  const { generalData, updateGeneralData } = useSetup();
-  const [teamSize, setTeamSize] = useState<TeamSizeType | null>(null);
-  const [companySize, setCompanySize] = useState<CompanySizeType | null>(null);
+const ReferralSource: React.FC<ReferralSourceProps> = ({ onNext, onBack }) => {
+  const { referralData, updateReferralData } = useSetup();
+  const [selectedSource, setSelectedSource] =
+    useState<ReferralSourceType | null>(null);
 
   // Load saved data when component mounts
   useEffect(() => {
-    if (generalData) {
-      setTeamSize(generalData.teamSize);
-      setCompanySize(generalData.companySize);
+    if (referralData) {
+      setSelectedSource(referralData.source);
     }
-  }, [generalData]);
+  }, [referralData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (teamSize && companySize) {
-      const data = { teamSize, companySize };
-      updateGeneralData(data);
+    if (selectedSource) {
+      const data = { source: selectedSource };
+      updateReferralData(data);
       onNext(data);
     }
   };
 
-  const teamSizes: TeamSizeType[] = [
-    "Only me",
-    "02-05",
-    "06-10",
-    "11-15",
-    "16-25",
-    "26-50",
-    "51-100",
-    "101-500",
-  ];
-
-  const companySizes: CompanySizeType[] = [
-    "01-19",
-    "20-49",
-    "50-99",
-    "100-250",
-    "251-500",
-    "501-1500",
-    "1500+",
+  const sources: ReferralSourceType[] = [
+    "YouTube",
+    "Search Engine",
+    "Linked in",
+    "Facebook",
+    "Instagram",
+    "Audio Ad",
+    "Other",
   ];
 
   return (
@@ -95,18 +79,18 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
             </button>
 
             <h2 className="text-2xl font-semibold">
-              How many people are on your team?
+              One last question, how did you hear about us?
             </h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-12">
+          <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid grid-cols-4 gap-4">
-              {teamSizes.map((size) => (
+              {sources.map((source) => (
                 <label
-                  key={size}
+                  key={source}
                   className={`flex cursor-pointer items-center rounded-lg border p-4 transition-colors
                     ${
-                      teamSize === size
+                      selectedSource === source
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-300 hover:border-gray-400"
                     }
@@ -114,59 +98,26 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
                 >
                   <input
                     type="radio"
-                    name="teamSize"
-                    value={size}
-                    checked={teamSize === size}
+                    name="source"
+                    value={source}
+                    checked={selectedSource === source}
                     onChange={(e) =>
-                      setTeamSize(e.target.value as TeamSizeType)
+                      setSelectedSource(e.target.value as ReferralSourceType)
                     }
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="ml-2 text-sm text-gray-900">{size}</span>
+                  <span className="ml-2 text-sm text-gray-900">{source}</span>
                 </label>
               ))}
-            </div>
-
-            <div>
-              <h2 className="mb-6 text-2xl font-semibold">
-                How many people work at your company?
-              </h2>
-
-              <div className="grid grid-cols-4 gap-4">
-                {companySizes.map((size) => (
-                  <label
-                    key={size}
-                    className={`flex cursor-pointer items-center rounded-lg border p-4 transition-colors
-                      ${
-                        companySize === size
-                          ? "border-blue-500 bg-blue-50"
-                          : "border-gray-300 hover:border-gray-400"
-                      }
-                    `}
-                  >
-                    <input
-                      type="radio"
-                      name="companySize"
-                      value={size}
-                      checked={companySize === size}
-                      onChange={(e) =>
-                        setCompanySize(e.target.value as CompanySizeType)
-                      }
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-sm text-gray-900">{size}</span>
-                  </label>
-                ))}
-              </div>
             </div>
 
             <div className="flex justify-center">
               <button
                 type="submit"
-                disabled={!teamSize || !companySize}
+                disabled={!selectedSource}
                 className={`flex items-center rounded-lg px-6 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                   ${
-                    teamSize && companySize
+                    selectedSource
                       ? "bg-[#F0FAFF] hover:bg-blue-50"
                       : "bg-gray-100 cursor-not-allowed"
                   }
@@ -205,4 +156,4 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
   );
 };
 
-export default GeneralQuestions;
+export default ReferralSource;

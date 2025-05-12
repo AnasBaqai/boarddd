@@ -1,18 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   AccountSetupFormData,
   AccountSetupProps,
 } from "../../types/account-setup";
+import { useSetup } from "../../context/SetupContext";
 
 const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
+  const { accountData, updateAccountData } = useSetup();
   const [formData, setFormData] = useState<AccountSetupFormData>({
     fullName: "",
     password: "",
     accountName: "",
   });
 
+  // Load saved data when component mounts
+  useEffect(() => {
+    if (accountData) {
+      setFormData(accountData);
+    }
+  }, [accountData]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    updateAccountData(formData);
     onNext(formData);
   };
 
