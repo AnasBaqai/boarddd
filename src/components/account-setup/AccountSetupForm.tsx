@@ -27,18 +27,20 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen flex-col md:flex-row">
       {/* Left side - Content */}
-      <div className="flex w-1/2 flex-col items-center justify-center px-12">
+      <div className="flex w-full md:w-1/2 flex-col items-center justify-center px-6 md:px-12 py-8 md:py-0">
         <div className="w-full max-w-md">
-          <div className="mb-16">
+          <div className="mb-8 md:mb-16">
             <h1 className="text-2xl font-semibold">Boarddd</h1>
           </div>
 
           <div>
-            <h2 className="mb-8 text-2xl font-semibold">Make your Account</h2>
+            <h2 className="mb-6 md:mb-8 text-xl md:text-2xl font-semibold">
+              Make your Account
+            </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div className="space-y-2">
                 <label
                   htmlFor="fullName"
@@ -100,7 +102,7 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
                 />
               </div>
 
-              <div className="flex items-center justify-between pt-8">
+              <div className="flex items-center justify-between pt-6 md:pt-8">
                 <button
                   type="button"
                   onClick={onBack}
@@ -168,7 +170,7 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
       </div>
 
       {/* Right side - Grey background */}
-      <div className="w-1/2 bg-gray-200" />
+      <div className="hidden md:block w-full md:w-1/2 bg-gray-200" />
     </div>
   );
 };

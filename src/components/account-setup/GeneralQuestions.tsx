@@ -54,19 +54,19 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
 
   return (
     <div className="min-h-screen w-full bg-white">
-      <div className="mx-auto max-w-2xl px-8 py-12">
+      <div className="mx-auto max-w-2xl px-4 sm:px-8 py-8 sm:py-12">
         {/* Logo */}
-        <div className="mb-16 text-center">
+        <div className="mb-8 sm:mb-16 text-center">
           <h1 className="text-2xl font-semibold">Boarddd</h1>
         </div>
 
         {/* Back button and questions */}
-        <div className="space-y-12">
-          <div className="flex items-center gap-8 pl-8">
+        <div className="space-y-8 sm:space-y-12">
+          <div className="flex flex-col md:flex-row md:items-center md:gap-8 md:pl-8">
             <button
               type="button"
               onClick={onBack}
-              className="flex items-center text-sm text-gray-500 hover:text-gray-700"
+              className="flex items-center text-sm text-gray-500 hover:text-gray-700 md:absolute md:left-40 md:top-40 relative mb-4 md:mb-0"
             >
               <svg
                 width="24"
@@ -94,17 +94,17 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
               Go back
             </button>
 
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-xl sm:text-2xl font-semibold">
               How many people are on your team?
             </h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-12">
-            <div className="grid grid-cols-4 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
               {teamSizes.map((size) => (
                 <label
                   key={size}
-                  className={`flex cursor-pointer items-center rounded-lg border p-4 transition-colors
+                  className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors
                     ${
                       teamSize === size
                         ? "border-blue-500 bg-blue-50"
@@ -122,21 +122,23 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
                     }
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="ml-2 text-sm text-gray-900">{size}</span>
+                  <span className="ml-2 text-xs sm:text-sm text-gray-900">
+                    {size}
+                  </span>
                 </label>
               ))}
             </div>
 
             <div>
-              <h2 className="mb-6 text-2xl font-semibold">
+              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-semibold">
                 How many people work at your company?
               </h2>
 
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
                 {companySizes.map((size) => (
                   <label
                     key={size}
-                    className={`flex cursor-pointer items-center rounded-lg border p-4 transition-colors
+                    className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors
                       ${
                         companySize === size
                           ? "border-blue-500 bg-blue-50"
@@ -154,13 +156,15 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
                       }
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="ml-2 text-sm text-gray-900">{size}</span>
+                    <span className="ml-2 text-xs sm:text-sm text-gray-900">
+                      {size}
+                    </span>
                   </label>
                 ))}
               </div>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-4 sm:pt-8">
               <button
                 type="submit"
                 disabled={!teamSize || !companySize}
