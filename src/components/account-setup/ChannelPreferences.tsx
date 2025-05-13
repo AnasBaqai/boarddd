@@ -122,8 +122,9 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
               type="submit"
               className="flex items-center rounded-lg bg-[#F0FAFF] px-6 py-2.5 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              Next
               <img src={"/arrow.svg"} className={"p-2"} />
+              Next
+             
             </button>
           </div>
         </form>

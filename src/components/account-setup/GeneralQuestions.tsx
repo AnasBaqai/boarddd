@@ -159,8 +159,9 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
                   }
                 `}
               >
-                Next
                 <img src={"/arrow.svg"} className={"p-1"} />
+                Next
+                
               </button>
             </div>
           </form>

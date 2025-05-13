@@ -120,8 +120,9 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
                   onClick={handleSubmit}
                   className="flex items-center rounded-lg bg-[#F0FAFF] px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
+                 <img src={"/arrow.svg"} className={"p-1"} />
                   Next
-                  <img src={"/arrow.svg"} className={"p-1"} />
+            
                 </button>
               </div>
             </form>
@@ -145,8 +146,9 @@ const AccountSetupForm: React.FC<AccountSetupProps> = ({ onNext, onBack }) => {
               onClick={handleSubmit}
               className="flex items-center rounded-lg bg-[#F0FAFF] px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
+                <img src={"/arrow.svg"} className={"p-1"} />
               Next
-              <img src={"/arrow.svg"} className={"p-1"} />
+            
             </button>
           </div>
         </div>

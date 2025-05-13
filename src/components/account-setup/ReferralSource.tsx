@@ -102,8 +102,9 @@ const ReferralSource: React.FC<ReferralSourceProps> = ({ onNext, onBack }) => {
                   }
                 `}
               >
-                Next
                 <img src={"/arrow.svg"} className={"p-2"} />
+                Next
+                
               </button>
             </div>
           </form>

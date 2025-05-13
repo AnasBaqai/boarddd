@@ -99,8 +99,9 @@ const PurposeSelection: React.FC<PurposeSelectionProps> = ({
                   }
                 `}
               >
+                 <img src={"/arrow.svg"} className={"p-2"} />
                 Next
-                <img src={"/arrow.svg"} className={"p-2"} />
+               
               </button>
             </div>
           </form>

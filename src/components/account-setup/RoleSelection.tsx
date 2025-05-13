@@ -135,8 +135,9 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
                     : "bg-gray-100 cursor-not-allowed"
                 }`}
               >
-                Next
                 <img src={"/arrow.svg"} className={"p-1"} />
+                Next
+                
               </button>
             </div>
           </form>
