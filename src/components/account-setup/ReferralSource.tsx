@@ -7,26 +7,25 @@ import { useSetup } from "../../context/SetupContext";
 
 const ReferralSource: React.FC<ReferralSourceProps> = ({ onNext, onBack }) => {
   const { referralData, updateReferralData } = useSetup();
-  const [selectedSource, setSelectedSource] =
-    useState<ReferralSourceType | null>(null);
+  const [selectedSources, setSelectedSources] = useState<ReferralSourceType[]>([]);
 
   // Load saved data when component mounts
   useEffect(() => {
     if (referralData) {
-      setSelectedSource(referralData.source);
+      setSelectedSources([referralData.source]);
     }
   }, [referralData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedSource) {
-      const data = { source: selectedSource };
+    if (selectedSources.length > 0) {
+      const data = { source: selectedSources[0] };
       updateReferralData(data);
       onNext(data);
     }
   };
 
-  const sources: ReferralSourceType[] = [
+  const referralSources: ReferralSourceType[] = [
     "YouTube",
     "Search Engine",
     "Linked in",
@@ -56,35 +55,35 @@ const ReferralSource: React.FC<ReferralSourceProps> = ({ onNext, onBack }) => {
               Go back
             </button>
 
-            <h2 className="text-xl sm:text-2xl font-semibold">
-              One last question, how did you hear about us?
+            <h2 className="text-[#151515] font-['Bricolage_Grotesque'] mb-4" style={{ fontSize: '24px', fontWeight: 500, lineHeight: 'normal' }}>
+            One last question, how did you hear about us?
             </h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-              {sources.map((source) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-md mx-auto">
+              {referralSources.map((source) => (
                 <label
                   key={source}
-                  className={`flex cursor-pointer items-center rounded-lg border p-3 sm:p-4 transition-colors
-                    ${
-                      selectedSource === source
-                        ? "border-blue-500 bg-blue-50"
-                        : "border-gray-300 hover:border-gray-400"
-                    }
-                  `}
+                  className={`flex cursor-pointer items-center rounded-lg border p-2 transition-colors ${
+                    selectedSources.includes(source)
+                      ? "border-blue-500 bg-blue-50"
+                      : "border-gray-200 hover:border-gray-300"
+                  }`}
                 >
                   <input
-                    type="radio"
-                    name="source"
+                    type="checkbox"
+                    name="referralSource"
                     value={source}
-                    checked={selectedSource === source}
-                    onChange={(e) =>
-                      setSelectedSource(e.target.value as ReferralSourceType)
-                    }
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                    checked={selectedSources.includes(source)}
+                    onChange={() => {
+                      setSelectedSources((prev) => 
+                        prev.includes(source) ? prev.filter(s => s !== source) : [...prev, source]
+                      );
+                    }}
+                    className="h-3 w-3 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="ml-2 text-xs sm:text-sm text-gray-900">
+                  <span className="ml-1 text-[#151515] font-['Poppins'] text-[12px] font-normal">
                     {source}
                   </span>
                 </label>
@@ -94,10 +93,10 @@ const ReferralSource: React.FC<ReferralSourceProps> = ({ onNext, onBack }) => {
             <div className="flex justify-center pt-4 sm:pt-8">
               <button
                 type="submit"
-                disabled={!selectedSource}
+                disabled={selectedSources.length === 0}
                 className={`flex items-center rounded-lg px-6 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                   ${
-                    selectedSource
+                    selectedSources.length > 0
                       ? "bg-[#F0FAFF] hover:bg-blue-50"
                       : "bg-gray-100 cursor-not-allowed"
                   }

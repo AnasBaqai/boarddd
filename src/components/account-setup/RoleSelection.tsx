@@ -35,7 +35,9 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <h1 className="font-medium">Boarddd</h1>
+          <h1 className="text-5xl font-medium text-[#151515] font-['Bricolage_Grotesque']" style={{ fontSize: '40px', lineHeight: 'normal' }}>
+            Board
+          </h1>
         </div>
 
         {/* Back button */}
@@ -53,9 +55,9 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
             {/* Purpose display */}
             <div className="space-y-4 sm:space-y-6">
               <div className="space-y-3">
-                <h2 className="text-center">
-                  Hey there, what brings you here today?
-                </h2>
+                <p className="text-center text-[#151515] font-['Bricolage_Grotesque']" style={{ fontSize: '24px', fontWeight: 500, lineHeight: 'normal' }}>
+                  Hey there, what's bringing you up today?
+                </p>
 
                 <div className="flex justify-center gap-3">
                   {purposeData && (
@@ -94,7 +96,7 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
                 </h2>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-md mx-auto">
-                  {roles.slice(0, 3).map((role) => (
+                  {roles.map((role) => (
                     <label
                       key={role}
                       className={`flex cursor-pointer items-center rounded-lg border p-2 transition-colors ${
@@ -104,34 +106,15 @@ const RoleSelection: React.FC<RoleSelectionProps> = ({ onNext, onBack }) => {
                       }`}
                     >
                       <input
-                        type="radio"
+                        type="checkbox"
                         name="role"
                         value={role}
                         checked={selectedRole === role}
-                        onChange={() => setSelectedRole(role)}
-                        className="h-3 w-3 text-blue-600 focus:ring-blue-500"
-                      />
-                      <span className="ml-1 text-xs text-gray-900">{role}</span>
-                    </label>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-md mx-auto">
-                  {roles.slice(3).map((role) => (
-                    <label
-                      key={role}
-                      className={`flex cursor-pointer items-center rounded-lg border p-2 transition-colors ${
-                        selectedRole === role
-                          ? "border-blue-500 bg-blue-50"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="role"
-                        value={role}
-                        checked={selectedRole === role}
-                        onChange={() => setSelectedRole(role)}
+                        onChange={() => {
+                          setSelectedRole((prev) => 
+                            prev === role ? null : role
+                          );
+                        }}
                         className="h-3 w-3 text-blue-600 focus:ring-blue-500"
                       />
                       <span className="ml-1 text-xs text-gray-900">{role}</span>

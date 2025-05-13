@@ -49,8 +49,10 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
     <div className="min-h-screen w-full bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Logo */}
-        <div className="mb-12 text-center">
-          <h1 className="text-2xl font-semibold">Boarddd</h1>
+        <div className="mb-8 sm:mb-16 text-center">
+          <h1 className="text-5xl font-medium text-[#151515] font-['Bricolage_Grotesque']" style={{ fontSize: '40px', lineHeight: 'normal' }}>
+            Board
+          </h1>
         </div>
 
         {/* Back button*/}
@@ -66,9 +68,9 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
         <form onSubmit={handleSubmit} className="space-y-12">
           {/* Heading */}
           <div className="text-center space-y-4">
-            <h2 className="text-[32px] font-medium leading-tight">
+            <p className="text-center text-[#151515] font-['Bricolage_Grotesque'] mb-4" style={{ fontSize: '24px', fontWeight: 500, lineHeight: 'normal' }}>
               Select what you'd like to manage the most in your Channel
-            </h2>
+            </p>
             <p className="text-gray-600">
               You can select multiple cards of your choice.
             </p>
@@ -99,17 +101,11 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
                     <img
                       src={`/channel-icons/${iconName}.svg`}
                       alt={feature}
-                      className={`w-8 h-8 ${
-                        isSelected
-                          ? "brightness-0 invert"
-                          : feature === "Task Management"
-                          ? "text-blue-500 [&>path]:fill-blue-500"
-                          : ""
-                      }`}
+                      className={`w-8 h-8 `}
                     />
                   </div>
                   <h3
-                    className={`text-center text-lg font-medium whitespace-nowrap mb-0 ${
+                    className={`text-center text-[#151515] font-['Bricolage_Grotesque'] text-[16px] font-semibold mb-0 ${
                       isSelected ? "text-white" : "text-gray-900"
                     }`}
                   >

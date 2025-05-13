@@ -21,8 +21,14 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
       <div className="flex w-full md:w-1/2">
         <div className="w-full pl-8 pr-4 py-6 md:pl-12 md:pr-[25%]">
           <div className="mb-16 md:mb-20 text-center md:text-left">
-            <h1 className="font-semibold">Boarddd</h1>
+            <h1 className="text-5xl font-medium text-center text-[#151515] font-['Bricolage_Grotesque']" style={{ fontSize: '48px', lineHeight: 'normal' }}>
+              Welcome to Boar<span className="text-[#151515]">d</span>dd
+            </h1>
           </div>
+
+          <p className="mt-2.5 text-base text-center text-[#151515] font-['Poppins']" style={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}>
+            Get started - it's free. No credit card needed.
+          </p>
 
           <div className="space-y-8 md:space-y-10">
             <div>
@@ -95,6 +101,26 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
               </Link>
             </div>
           </div>
+
+          <footer className="mt-10 text-center text-stone-300 max-md:mt-10">
+            <p>
+              By proceeding, you agree to the
+              <br />
+              <a
+                href="/terms"
+                className="underline text-[rgba(0,95,217,1)]"
+              >
+                Terms of Service
+              </a>{" "}
+              and{" "}
+              <a
+                href="/privacy"
+                className="underline text-[rgba(0,95,217,1)]"
+              >
+                Privacy Policy
+              </a>
+            </p>
+          </footer>
         </div>
       </div>
 

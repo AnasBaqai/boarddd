@@ -83,7 +83,7 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
           <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
             <div className="space-y-6">
               <div>
-                <h2 className="heading-bricolage mb-4">
+                <h2 className="text-[#151515] font-['Bricolage_Grotesque'] mb-4" style={{ fontSize: '24px', fontWeight: 500, lineHeight: 'normal' }}>
                   How many people are in your team?
                 </h2>
 
@@ -114,8 +114,8 @@ const GeneralQuestions: React.FC<GeneralQuestionsProps> = ({
               </div>
 
               <div>
-                <h2 className="heading-bricolage mb-4">
-                  What's your company size?
+                <h2 className="text-[#151515] font-['Bricolage_Grotesque'] mb-4" style={{ fontSize: '24px', fontWeight: 500, lineHeight: 'normal' }}>
+                How many people work at your company?
                 </h2>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">

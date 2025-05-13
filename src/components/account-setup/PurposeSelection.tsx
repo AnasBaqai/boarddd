@@ -33,8 +33,10 @@ const PurposeSelection: React.FC<PurposeSelectionProps> = ({
     <div className="min-h-screen w-full bg-white">
       <div className="mx-auto max-w-2xl px-4 sm:px-8 py-8 sm:py-12">
         {/* Logo */}
-        <div className="mb-8 sm:mb-16 text-center">
-          <h1 className="text-5xl font-semibold mb-">Boarddd</h1>
+        <div className="mb-1 sm:mb-8 text-center">
+          <h1 className="text-5xl font-medium text-[#151515] font-['Bricolage_Grotesque']" style={{ fontSize: '40px', lineHeight: 'normal' }}>
+            Board
+          </h1>
         </div>
 
         {/* Back button and questions */}
@@ -49,9 +51,9 @@ const PurposeSelection: React.FC<PurposeSelectionProps> = ({
               Go back
             </button>
 
-            <h2 className="text-xl sm:text-3xl font-medium">
-              Hey there, what brings you here today?
-            </h2>
+            <p className="text-center text-[#151515] font-['Bricolage_Grotesque']" style={{ fontSize: '24px', fontWeight: 500, lineHeight: 'normal' }}>
+              Hey there, what's bringing you up today?
+            </p>
           </div>
 
           {/* Form */}
@@ -69,7 +71,7 @@ const PurposeSelection: React.FC<PurposeSelectionProps> = ({
                   `}
                 >
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="purpose"
                     value={purpose}
                     checked={selectedPurpose === purpose}
