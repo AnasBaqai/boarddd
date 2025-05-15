@@ -8,7 +8,7 @@ const ChannelPreferencesSetup = () => {
 
   const handleNext: (data: ChannelPreferencesData) => void = () => {
     // Navigate to the next step (dashboard or completion page)
-    navigate("/dashboard");
+    navigate("/team-invite");
   };
 
   const handleBack = () => {

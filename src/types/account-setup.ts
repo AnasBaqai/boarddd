@@ -99,3 +99,8 @@ export interface ChannelPreferencesProps {
   onNext: (data: ChannelPreferencesData) => void;
   onBack: () => void;
 }
+
+export interface TeamInvitationProps {
+  onNext: (data: { invitedEmails: string[]; allowAutoSignup: boolean }) => void;
+  onBack: () => void;
+}

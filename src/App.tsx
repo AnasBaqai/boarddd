@@ -15,6 +15,7 @@ import GeneralQuestionsSetup from "./pages/GeneralQuestionsSetup";
 import ReferralSourceSetup from "./pages/ReferralSourceSetup";
 import ChannelPreferencesSetup from "./pages/ChannelPreferencesSetup";
 import { SetupProvider } from "./context/SetupContext";
+import TeamInviteSetup from "./pages/TeamInviteSetup";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function AnimatedRoutes() {
           path="/channel-preferences"
           element={<ChannelPreferencesSetup />}
         />
+        <Route path="/team-invite" element={<TeamInviteSetup />} />
         <Route path="/" element={<Navigate to="/signin" replace />} />
       </Routes>
     </AnimatePresence>

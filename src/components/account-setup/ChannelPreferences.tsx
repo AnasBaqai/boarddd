@@ -50,7 +50,10 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Logo */}
         <div className="mb-8 sm:mb-16 text-center">
-          <h1 className="text-5xl font-medium text-[#151515] font-['Bricolage_Grotesque']" style={{ fontSize: '40px', lineHeight: 'normal' }}>
+          <h1
+            className="text-5xl font-medium text-[#151515] font-['Bricolage_Grotesque']"
+            style={{ fontSize: "40px", lineHeight: "normal" }}
+          >
             Board
           </h1>
         </div>
@@ -68,7 +71,14 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
         <form onSubmit={handleSubmit} className="space-y-12">
           {/* Heading */}
           <div className="text-center space-y-4">
-            <p className="text-center text-[#151515] font-['Bricolage_Grotesque'] mb-4" style={{ fontSize: '24px', fontWeight: 500, lineHeight: 'normal' }}>
+            <p
+              className="text-center text-[#151515] font-['Bricolage_Grotesque'] mb-4"
+              style={{
+                fontSize: "24px",
+                fontWeight: 500,
+                lineHeight: "normal",
+              }}
+            >
               Select what you'd like to manage the most in your Channel
             </p>
             <p className="text-gray-600">
@@ -88,11 +98,11 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
                   onClick={() => toggleFeature(feature)}
                   className={`
                     relative flex flex-col justify-end
-                    rounded-2xl p-8 pb-4 cursor-pointer transition-all duration-200
+                    rounded-[20px] p-8 pb-4 cursor-pointer transition-all duration-200
                     min-h-[220px] hover:scale-105
                     ${
                       isSelected
-                        ? "bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg"
+                        ? "[background:linear-gradient(136deg,#67B3FF_0%,#004CAD_98.89%)] shadow-[73px_120px_39px_0px_rgba(0,0,0,0.00),_47px_77px_36px_0px_rgba(0,0,0,0.02),_26px_43px_30px_0px_rgba(0,0,0,0.07),_12px_19px_22px_0px_rgba(0,0,0,0.12),_3px_5px_12px_0px_rgba(0,0,0,0.14)]"
                         : "bg-white border-2 border-gray-100"
                     }
                   `}
@@ -101,7 +111,9 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
                     <img
                       src={`/channel-icons/${iconName}.svg`}
                       alt={feature}
-                      className={`w-8 h-8 `}
+                      className={`w-8 h-8 ${
+                        isSelected ? "brightness-0 invert" : ""
+                      }`}
                     />
                   </div>
                   <h3
@@ -124,7 +136,6 @@ const ChannelPreferences: React.FC<ChannelPreferencesProps> = ({
             >
               <img src={"/arrow.svg"} className={"p-2"} />
               Next
-             
             </button>
           </div>
         </form>
